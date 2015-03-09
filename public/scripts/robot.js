@@ -8,22 +8,29 @@ var RobotBox = React.createClass({
       url: this.props.url,
       dataType: 'json',
       success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
+      	console.log(data)
+        this.setState({data: data}); // we set the current data using this.State, which we can use for our rendering components. 
+      }.bind(this), //find! what this does!!!
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
 	},
+	componentDidMount: function() {
+    this.getData();
+  },
 	displayData:function(){
 
 	},
 	validateData:function(){
 		console.log("validating!")
 	},
-
+	// how can i get the data in? 
+	// react totutiral
 	handleDataSubmission:function(robot){
 		//this.validateData()
+		console.log("robot")
+		console.log(robot)
 		var robots = this.state.data;
     robots.push(robot); // robot being hash of grid size coorindates.
 		this.setState({data: robots}, function() {
@@ -48,13 +55,24 @@ var RobotBox = React.createClass({
 	render:function(){
 		return(
 			<div className="robotContainer">
-		        <h1>instructions</h1>
+        <h1>instructions</h1>
 
-		        <RobotForm onRobotCoordinateSubmit={this.handleDataSubmission} />
-      		</div>
+        <RobotForm onRobotCoordinateSubmit={this.handleDataSubmission} />
+  		</div>
 		)
 	}
 
+})
+
+var RobotOutput = React.createClass({
+	render:function(){
+		var dataOutput = this.props.data
+		console.log(dataOutput)
+		return(
+			<input type="text" id="coordinateOutput"></input>
+		)
+
+	}
 })
 // enter data
 // send of form
@@ -95,8 +113,8 @@ var RobotForm = React.createClass({
 });
 
 React.render(
-  <RobotBox url="coordinates.json" />,
-  document.getElementById('content')
+  <RobotBox url="coordinates.json" />, // THIS NEEDS TO BE SET IN NODE ,
+  document.getElementById('content')// THINK ITS A URL, IT NEEDS TO BE RETURNED
 );
 
 

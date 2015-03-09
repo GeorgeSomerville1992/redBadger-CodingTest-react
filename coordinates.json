@@ -1,7 +1,12 @@
 [
     {
-    	"boundaryCoordinates": "40 50", 
-    	"coordinateInput":"5 0 F",
-    	"instructionCommands":"FFFR" 
+        "boundaryCoordinates": "40 50",
+        "coordinateInput": "5 0 F",
+        "instructionCommands": "FFFR"
+    },
+    {
+        "boundaryCoordinates": "sadf",
+        "coordinateInput": "adf",
+        "instructionCommands": "adf"
     }
 ]
